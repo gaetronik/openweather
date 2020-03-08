@@ -1,3 +1,5 @@
+use serde::Deserialize;
+
 #[derive(Default, Debug)]
 pub struct Settings {
     pub unit: Option<Unit>,
@@ -21,7 +23,7 @@ trait FormatParameters {
     fn format(&self) -> Option<(String, String)>;
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Deserialize, Debug, Clone, Copy)]
 pub enum Unit {
     // Celcius, default
     Metric,
@@ -42,7 +44,7 @@ impl FormatParameters for Unit {
 }
 
 /// Translation is only applied for the description field!
-#[derive(Debug, Clone, Copy)]
+#[derive(Deserialize, Debug, Clone, Copy)]
 pub enum Language {
     Arabic,
     Bulgarian,
